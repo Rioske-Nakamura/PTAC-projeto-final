@@ -41,7 +41,7 @@ export default function Home(){
 
 
     return(
-
+<div>
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -60,6 +60,17 @@ export default function Home(){
   </div>
 </nav>  
 
+<form onSubmit={salvar}>
+                <h2>Nome</h2>
+                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text"></input>
+                <h2>Video</h2>
+                <input value={frame} onChange={(e) => setFrame(e.target.value)} type="text"></input>
+                <h2>Conteudo</h2>
+                <input value={conteudo} onChange={(e) => setConteudo(e.target.value)} type="text"></input>
+
+                <button type="submit">ADD</button>
+            </form>
+            </div>
 
      );
 }
