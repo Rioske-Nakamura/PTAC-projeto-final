@@ -51,9 +51,10 @@ export default function Home(){
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Login</a>
-        <a class="nav-link" href="#">Cadastrar</a>
+        <Link class="nav-link active" aria-current="page" to="/">Home</Link>
+        <Link class="nav-link" to="/pagina/logual">Login</Link>
+        <Link class="nav-link" to="/pagina/casdastra">Cadastro</Link>
+      
         <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </div>
     </div>
