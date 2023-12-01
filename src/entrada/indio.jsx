@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Cadastro from "./cadastro";
 import Login from "./login";
+import Nav from "../componente/navbar";
 import React, { useState, useEffect } from "react";
 export default function Pagina(){
  const {elemanto} = useParams("");
@@ -40,6 +41,7 @@ const salvar = (e) =>{
  if(elemanto == "logual"){
     return(
         <div>
+            <Nav></Nav>
             <Login/>
             <p>Azul</p>
             <Link to="/">Home</Link>
@@ -49,7 +51,9 @@ const salvar = (e) =>{
  }
 if (elemanto == "casdastra") {
     return(
+        
         <div>
+            <Nav></Nav>
             <p>Vermelho</p>
         </div>
      )
