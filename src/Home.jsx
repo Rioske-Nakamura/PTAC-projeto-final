@@ -28,7 +28,7 @@ export default function Home(){
         }]);
         setConteudo("");
         setNome("");
-        setImagem("");
+        setFrame("");
         setId(Id+1)
         setCount(count+1)
     };
@@ -70,7 +70,27 @@ export default function Home(){
 
                 <button type="submit">ADD</button>
             </form>
-            </div>
 
+
+            <div className="container text-center">
+                <div className="row">
+                    {video.map((ativ, index) => (
+                        <div className="col" key={index}>
+                            <div className="card" style={{ width: "18rem" }}>
+                                {ativ.frame}
+                                <div className="card-body">
+                                    <h5 className="card-title">{ativ.nome}</h5>
+                                    <p className="card-text">{ativ.conteudo}</p>
+                                    <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">apagar</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+          
+
+          
      );
 }
