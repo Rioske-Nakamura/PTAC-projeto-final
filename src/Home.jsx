@@ -63,7 +63,7 @@ export default function Home(){
 <form onSubmit={salvar}>
                 <h2>Nome</h2>
                 <input value={nome} onChange={(e) => setNome(e.target.value)} type="text"></input>
-                <h2>Video</h2>
+                <h2>Incorporaçao do video:</h2>
                 <input value={frame} onChange={(e) => setFrame(e.target.value)} type="text"></input>
                 <h2>Conteudo</h2>
                 <input value={conteudo} onChange={(e) => setConteudo(e.target.value)} type="text"></input>
@@ -77,7 +77,8 @@ export default function Home(){
                     {video.map((ativ, index) => (
                         <div className="col" key={index}>
                             <div className="card" style={{ width: "18rem" }}>
-                                {ativ.frame}
+                              
+                                <div  dangerouslySetInnerHTML={ {__html: ativ.frame}}/>
                                 <div className="card-body">
                                     <h5 className="card-title">{ativ.nome}</h5>
                                     <p className="card-text">{ativ.conteudo}</p>
