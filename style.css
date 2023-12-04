@@ -13,5 +13,9 @@ iframe{
 }
 
 .logica{
-    border: 1px black solid;
+    border: 2px black solid;
+}
+
+.azul{
+    align-content: space-between;
 }

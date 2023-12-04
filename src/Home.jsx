@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Nav from "./componente/navbar";
+import Detalhe from "./detalhe";
 export default function Home(){
     
     const alStorage = localStorage.getItem("lista");
@@ -39,6 +40,11 @@ export default function Home(){
         setVideo(novalista);
     };
 
+    const descricao= function(id){
+        return(
+            <Detalhe></Detalhe>
+        )
+    }
 
     return(
 <div>
@@ -67,7 +73,10 @@ export default function Home(){
                                 <div className="card-body">
                                     <h5 className="card-title">{ativ.nome}</h5>
                                     <p className="card-text">{ativ.conteudo}</p>
-                                    <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">apagar</button>
+                                    <div className="azul">
+                                    <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">Apagar</button>
+                                    <button onClick="descricao({ativ.Id})" className="btn btn-primary">Descriçao</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
