@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 export default function Detalhe(){
-    const {id} = useParams(0);
+    const {id} = useParams();
+
+    const fechar = function(){
+        
+    }
+
     return(
         <div className="logica">
-            <h1>Vai lacraia</h1>
+            <h1>{id}</h1>
+            <button className="btn btn-primary" onClick={fechar}>Fechar Descriçao</button>
         </div>
     )
 }
