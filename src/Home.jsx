@@ -4,6 +4,7 @@ import Detalhe from "./detalhe";
 
 export default function Home() {
   const alStorage = localStorage.getItem("lista");
+  const alStorage2 = localStorage.getItem("contem");
   const [count, setCount] = useState(0);
   const [conteudo, setConteudo] = useState("");
   const [frame, setFrame] = useState("");
@@ -11,15 +12,16 @@ export default function Home() {
   const [video, setVideo] = useState(alStorage ? JSON.parse(alStorage) : []);
   const [Id, setId] = useState(0);
 
-  const [mostrar, setMostrar] = useState(alStorage ? JSON.parse(alStorage) : []);
+  const [mostrar, setMostrar] = useState(alStorage2 ? JSON.parse(alStorage2) : []);
 
 
   
 
   useEffect(() => {
     localStorage.setItem("lista", JSON.stringify(video));
+    localStorage.setItem("contem", JSON.stringify(mostrar));
     document.title = `Você clicou ${count} vezes`;
-  }, [video, count]);
+  }, [video, count, mostrar]);
 
   const salvar = (e) => {
     e.preventDefault();
@@ -46,7 +48,7 @@ export default function Home() {
   };
 
   const descricao = (ativ) => {
-    setMostrar([ativ.conteudo]);
+    setMostrar([ativ]);
   };
   
   
@@ -79,9 +81,8 @@ export default function Home() {
                   <p className="card-text">{ativ.conteudo}</p>
                   <div className="azul">
                     <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">Apagar</button>
-                    <Link to={`/detalhe/${ativ.Id}`} className="btn btn-primary">
-  Descrição
-</Link>
+                    <button onClick={() => descricao(ativ)} className="btn btn-primary">Descrição</button>
+
 
                   </div>
                 </div>
@@ -92,17 +93,10 @@ export default function Home() {
       </div>
 
       {mostrar.map((ativ, index) => (
-            <div key={index}>
-              
-                  <h5 className="card-title">{ativ.nome}</h5>
-                  <p className="card-text">{ativ.conteudo}</p>
-                  <div className="azul">
-                    <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">Apagar</button>
-              
-                  </div>
-                </div>
-           
-          ))}
+  <div key={index}>
+    <Detalhe detalheId={ativ.Id} />
+  </div>
+))}
       
     </div>
   );
