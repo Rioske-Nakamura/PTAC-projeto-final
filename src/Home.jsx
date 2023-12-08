@@ -10,12 +10,11 @@ export default function Home() {
   const [nome, setNome] = useState("");
   const [video, setVideo] = useState(alStorage ? JSON.parse(alStorage) : []);
   const [Id, setId] = useState(0);
-  const [mostrar, setMostrar] = useState(false);
-  const [descri, setDescri] = useState(null);
 
-  const fechar = () => {
-    setMostrarDetalhe(false);
-  };
+  const [mostrar, setMostrar] = useState(alStorage ? JSON.parse(alStorage) : []);
+
+
+  
 
   useEffect(() => {
     localStorage.setItem("lista", JSON.stringify(video));
@@ -46,15 +45,13 @@ export default function Home() {
     setVideo(novalista);
   };
 
-  const descricao = (id) => {
-    setDescri(<Detalhe id={id} fecharDetalhe={fecharDetalhe} />);
-    setMostrar(true);
+  const descricao = (ativ) => {
+    setMostrar([ativ.conteudo]);
   };
+  
+  
 
-  const fecharDetalhe = () => {
-    setMostrar(false);
-    setDescri(null);
-  };
+  
 
   return (
     <div>
@@ -62,7 +59,7 @@ export default function Home() {
 
       <form onSubmit={salvar}>
                 <h2>Nome</h2>
-                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text"></input>
+                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
                 <h2>Incorporaçao do video:</h2>
                 <input value={frame} onChange={(e) => setFrame(e.target.value)} type="text"></input>
                 <h2>Conteudo</h2>
@@ -82,7 +79,10 @@ export default function Home() {
                   <p className="card-text">{ativ.conteudo}</p>
                   <div className="azul">
                     <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">Apagar</button>
-                    <button id={ativ.id} onClick={() => descricao(ativ.id)} className="btn btn-primary">Descrição</button>
+                    <Link to={`/detalhe/${ativ.Id}`} className="btn btn-primary">
+  Descrição
+</Link>
+
                   </div>
                 </div>
               </div>
@@ -91,7 +91,19 @@ export default function Home() {
         </div>
       </div>
 
-      {mostrar && descri}
+      {mostrar.map((ativ, index) => (
+            <div key={index}>
+              
+                  <h5 className="card-title">{ativ.nome}</h5>
+                  <p className="card-text">{ativ.conteudo}</p>
+                  <div className="azul">
+                    <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">Apagar</button>
+              
+                  </div>
+                </div>
+           
+          ))}
+      
     </div>
   );
 }
