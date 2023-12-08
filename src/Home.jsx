@@ -45,10 +45,12 @@ export default function Home() {
     const novalista = [...video];
     novalista.splice(index, 1);
     setVideo(novalista);
+    setMostrar([]);
   };
 
   const descricao = (ativ) => {
-    setMostrar([ativ]);
+    setMostrar([])
+    setMostrar([ativ.conteudo]);
   };
   
   

@@ -7,14 +7,23 @@ export default function Detalhe({ detalheId }) {
   const alStorage2 = localStorage.getItem("contem");
   const [mostrar, setMostrar] = useState(alStorage2 ? JSON.parse(alStorage2) : []);
   
+  useEffect(() => {
+    localStorage.setItem("lista", JSON.stringify(video));
+    localStorage.setItem("contem", JSON.stringify(mostrar));
+  }, [video, mostrar]);
 
+
+  const apagar = () => {
+        setMostrar([]);
+  };
   return (
     <div className="logica">
-      {video.map((ativ, index) => (
+      {mostrar.map((ativ, index) => (
         <div key={index}> 
-          <p>{ativ.conteudo}</p>
+          <p>{ativ}</p>
           <div className="azul">
-            <button className="btn btn-primary">Fechar</button>
+          <button onClick={() => apagar()} className="btn btn-primary">Fechar</button>
+
           </div>
         </div>
       ))}
