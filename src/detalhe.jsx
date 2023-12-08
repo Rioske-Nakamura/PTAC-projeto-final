@@ -20,6 +20,7 @@ export default function Detalhe({ detalheId }) {
     <div className="logica">
       {mostrar.map((ativ, index) => (
         <div key={index}> 
+        
           <p>{ativ}</p>
           <div className="azul">
           <button onClick={() => apagar()} className="btn btn-primary">Fechar</button>

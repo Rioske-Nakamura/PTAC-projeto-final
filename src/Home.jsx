@@ -49,7 +49,6 @@ export default function Home() {
   };
 
   const descricao = (ativ) => {
-    setMostrar([])
     setMostrar([ativ.conteudo]);
   };
   
@@ -96,10 +95,10 @@ export default function Home() {
 
       {mostrar.map((ativ, index) => (
   <div key={index}>
-    <Detalhe detalheId={ativ.Id} />
+    <Detalhe key={index} detalheData={ativ} />
   </div>
 ))}
-      
+     
     </div>
   );
 }
