@@ -57,12 +57,13 @@ export default function Home() {
   };
 
   
+ 
   const descricao = (ativ) => {
-   
     setMostrarDetalhe(true);
-    setMostrar([{conteudo: ativ.conteudo, nome: ativ.nome}]);
+    setMostrar([{ conteudo: ativ.conteudo, nome: ativ.nome }]);
   };
   
+
   
 
   
@@ -111,8 +112,9 @@ export default function Home() {
       </div>
 
       {mostrarDetalhe && (
-        <Detalhe detalheData={mostrar[0]} onClose={() => setMostrarDetalhe(false)} />
+  <Detalhe detalheData={mostrar[0]} onClose={() => setMostrarDetalhe(false)} />
       )}
+
      
     </div>
   );
