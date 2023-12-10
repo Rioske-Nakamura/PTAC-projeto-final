@@ -43,9 +43,7 @@ const salvar = (e) =>{
         <div>
             <Nav></Nav>
             <Login/>
-            <p>Azul</p>
-            <Link to="/">Home</Link>
-            <Link to="/pagina/casdastra">Se Cadastre</Link>
+          
         </div>
      )
  }
@@ -54,7 +52,7 @@ if (elemanto == "casdastra") {
         
         <div>
             <Nav></Nav>
-            <p>Vermelho</p>
+            <Cadastro></Cadastro>
         </div>
      )
 } else {

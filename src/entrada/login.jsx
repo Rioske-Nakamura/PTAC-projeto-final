@@ -3,19 +3,23 @@ import { Link } from "react-router-dom";
 export default function Login(){
 
     return(
-        <div className="logica">
+        <div className="formulario">
             <div>
             <h3>Email:</h3>
             <input></input>
             </div>
             <div>
             <h3>Senha:</h3>
-            <input></input>
+            <input className="algo"></input>
             </div>
             <div>
-            <Link to="/">Home</Link>
-            <Link to="/pagina/casdastra">Se Cadastre</Link>
-            <button> Logar</button>
+            <button className="btn btn-primary">  Logar</button>
+            <br/>
+            
+                    <Link to="/" className="toma">Home</Link>
+                
+                    <Link to="/pagina/casdastra">Se Cadastre</Link>
+            
             </div>
 
         </div>

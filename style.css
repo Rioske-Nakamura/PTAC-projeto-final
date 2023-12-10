@@ -47,7 +47,7 @@ iframe{
 }
 
 .formulario{
-    border: 4px rgb(38, 176, 0) solid;
+    border: 3px rgb(38, 176, 0) solid;
     background-color: rgb(89, 89, 89);
     color: rgb(255, 255, 255);
     width: 40%; 
@@ -56,11 +56,11 @@ iframe{
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 50px;
-    padding: 5px;
+    padding: 10px;
     box-sizing: border-box;
     height: auto;
     word-wrap: break-word;
-    border-radius: 30px;
+    border-radius: 25px;
 }
 
 
@@ -71,4 +71,15 @@ iframe{
 
 .btn-primary{
     margin: 5px;
+}
+
+.toma{
+    margin-right: 20px;
+    margin-left: 40px;
+}
+
+
+
+input{
+    width: 90%;
 }
