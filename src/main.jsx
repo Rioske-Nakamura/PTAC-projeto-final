@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Home'
-import Detalhe from './detalhe'
+import Detalhe from './componente/detalhe'
 import Pagina from './entrada/indio'
 import Nav from './componente/navbar'
 

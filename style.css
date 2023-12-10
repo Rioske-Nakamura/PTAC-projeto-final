@@ -1,3 +1,8 @@
+body{
+    background-color: black;
+    color: darkgreen;
+}
+
 .pokemon{
     position: absolute;
     top: 0;
@@ -13,9 +18,57 @@ iframe{
 }
 
 .logica{
-    border: 2px black solid;
+    border: 2px rgb(38, 176, 0) solid;
+    background-color: rgb(80, 80, 80);
+    color: rgb(255, 255, 255);
+    width: 350px; 
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    height: auto;
+    word-wrap: break-word;
+    border-radius: 10px;
 }
 
+.alinhar-direita{
+    align-items: end;
+}
+
+.text-centro{
+    text-align: center;
+}
 .azul{
-    align-content: space-between;
+   
+    align-items: end;
+}
+
+.formulario{
+    border: 4px rgb(38, 176, 0) solid;
+    background-color: rgb(89, 89, 89);
+    color: rgb(255, 255, 255);
+    width: 40%; 
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    height: auto;
+    word-wrap: break-word;
+    border-radius: 30px;
+}
+
+
+.tudo{
+    background-color: rgb(56, 56, 56);
+    color: rgb(0, 149, 0);
+}
+
+.btn-primary{
+    margin: 5px;
 }

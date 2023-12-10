@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "./componente/navbar";
-import Detalhe from "./detalhe";
+import Detalhe from "./componente/detalhe";
 
 export default function Home() {
   const alStorage = localStorage.getItem("lista");
@@ -11,6 +11,8 @@ export default function Home() {
   const [nome, setNome] = useState("");
   const [video, setVideo] = useState(alStorage ? JSON.parse(alStorage) : []);
   const [Id, setId] = useState(0);
+  const [criador, setCriador] = useState("")
+  const [linguagem, setLinguagem]= useState("")
   const [mostrarDetalhe, setMostrarDetalhe] = useState(false);
   const [mostrar, setMostrar] = useState(alStorage2 ? JSON.parse(alStorage2) : []);
 
@@ -34,6 +36,8 @@ export default function Home() {
         frame: frame,
         nome: nome,
         Id: Id,
+        linguagem: linguagem,
+        criador: criador
       },
     ]);
     setConteudo("");
@@ -41,6 +45,8 @@ export default function Home() {
     setFrame("");
     setId(Id + 1);
     setCount(count + 1);
+    setLinguagem("")
+    setCriador("")
   };
 
   const apagarC = (index) => {
@@ -50,9 +56,11 @@ export default function Home() {
     setMostrar([]);
   };
 
+  
   const descricao = (ativ) => {
+   
     setMostrarDetalhe(true);
-    setMostrar([ativ.conteudo]);
+    setMostrar([{conteudo: ativ.conteudo, nome: ativ.nome}]);
   };
   
   
@@ -63,28 +71,34 @@ export default function Home() {
     <div>
       <Nav></Nav>
 
-      <form onSubmit={salvar}>
+      <form className="formulario" onSubmit={salvar}>
+        <h1 className="text-centro"> Formulario</h1>
                 <h2>Nome</h2>
                 <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
                 <h2>Incorporaçao do video:</h2>
                 <input value={frame} onChange={(e) => setFrame(e.target.value)} type="text"></input>
                 <h2>Conteudo</h2>
                 <input value={conteudo} onChange={(e) => setConteudo(e.target.value)} type="text"></input>
-
-                <button type="submit">ADD</button>
+                <h2>Criador</h2>
+                <input value={criador} onChange={(e) => setCriador(e.target.value)} type="text"></input>
+                <h2>Lingua do Video</h2>
+                <input value={linguagem} onChange={(e) => setLinguagem(e.target.value)} type="text"></input>
+                  <br/>
+                <button type="submit" className="btn btn-primary">ADD</button>
             </form>
 
       <div className="container text-center">
         <div className="row">
           {video.map((ativ, index) => (
             <div className="col" key={index}>
-              <div className="card" style={{ width: "18rem" }}>
+              <div className="card" style={{ width: "18rem", height: "100%", backgroundColor: "rgb(111, 111, 111)", color: "rgb(255, 255, 255", border: "4px rgb(38, 176, 0) solid"}}>
                 <div dangerouslySetInnerHTML={{ __html: ativ.frame }} />
                 <div className="card-body">
                   <h5 className="card-title">{ativ.nome}</h5>
                   <p className="card-text">{ativ.conteudo}</p>
                   <div className="azul">
                     <button id={ativ.Id} onClick={() => apagarC(index)} className="btn btn-primary">Apagar</button>
+
                     <button onClick={() => descricao(ativ)} className="btn btn-primary">Descrição</button>
 
 
