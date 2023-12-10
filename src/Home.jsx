@@ -11,17 +11,19 @@ export default function Home() {
   const [nome, setNome] = useState("");
   const [video, setVideo] = useState(alStorage ? JSON.parse(alStorage) : []);
   const [Id, setId] = useState(0);
-
+  const [mostrarDetalhe, setMostrarDetalhe] = useState(false);
   const [mostrar, setMostrar] = useState(alStorage2 ? JSON.parse(alStorage2) : []);
 
 
   
 
   useEffect(() => {
-    localStorage.setItem("lista", JSON.stringify(video));
-    localStorage.setItem("contem", JSON.stringify(mostrar));
-    document.title = `Você clicou ${count} vezes`;
-  }, [video, count, mostrar]);
+  localStorage.setItem("lista", JSON.stringify(video));
+  localStorage.setItem("contem", JSON.stringify(mostrar));
+  document.title = `Você clicou ${count} vezes`;
+ 
+}, [video, count, mostrar]);
+
 
   const salvar = (e) => {
     e.preventDefault();
@@ -49,6 +51,7 @@ export default function Home() {
   };
 
   const descricao = (ativ) => {
+    setMostrarDetalhe(true);
     setMostrar([ativ.conteudo]);
   };
   
@@ -93,11 +96,9 @@ export default function Home() {
         </div>
       </div>
 
-      {mostrar.map((ativ, index) => (
-  <div key={index}>
-    <Detalhe key={index} detalheData={ativ} />
-  </div>
-))}
+      {mostrarDetalhe && (
+        <Detalhe detalheData={mostrar[0]} onClose={() => setMostrarDetalhe(false)} />
+      )}
      
     </div>
   );

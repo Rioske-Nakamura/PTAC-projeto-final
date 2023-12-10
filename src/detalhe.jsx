@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export default function Detalhe({ detalheId }) {
+export default function Detalhe({  onClose }) {
   const alStorage = localStorage.getItem("lista");
   const [video, setVideo] = useState(alStorage ? JSON.parse(alStorage) : []);
   const alStorage2 = localStorage.getItem("contem");
@@ -15,6 +15,7 @@ export default function Detalhe({ detalheId }) {
 
   const apagar = () => {
         setMostrar([]);
+        onClose();
   };
   return (
     <div className="logica">
