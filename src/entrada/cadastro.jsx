@@ -20,11 +20,13 @@ export default function Cadastro() {
   const salvarusuario = (e) => {
     e.preventDefault();
     
-    if(email.endsWith("@gmail.com")){
-        setErroEmail("Endereço de email errado")
-        setMensagem("Email nao cadastrado")
-        setEmail("")
-        return;
+    const confereEmail = email.trim();
+
+    if (!confereEmail.endsWith("@gmail.com")) {
+      setErroEmail("Endereço de email incorreto");
+      setMensagem("Email não cadastrado");
+      setEmail("");
+      return;
     }
 
 
