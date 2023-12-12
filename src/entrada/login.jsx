@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
 
 
-    const usuarioEncontrado = contas.find((conta) => conta.email === email);
+const usuarioEncontrado = contas.find((conta) => conta.email === email);
 
     if (!usuarioEncontrado) {
       setEmail("");
@@ -42,31 +42,16 @@ export default function Login() {
         <div>
           <h3>Email:</h3>
           <h1 className={mensagem[1]}>{mensagem[0]}</h1>
-          <input
-            className="algo"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="text"
-          />
+          <input className="algo"   value={email}  onChange={(e) => setEmail(e.target.value)} type="text" />
         </div>
         <div>
           <h3>Senha:</h3>
-          <input
-            className="algo"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            type="password"
-          />
+          <input className="algo" value={senha} onChange={(e) => setSenha(e.target.value)}type="password"/>
         </div>
         <div>
-          <button type="submit" className="btn btn-primary">
-            Logar
-          </button>
+          <button type="submit" className="btn btn-primary">Logar </button>
           <br />
-
-          <Link to="/" className="toma">
-            Home
-          </Link>
+          <Link to="/" className="toma">Home</Link>
 
           <Link to="/pagina/casdastra">Se Cadastre</Link>
         </div>
