@@ -75,15 +75,15 @@ export default function Home() {
       <form className="formulario" onSubmit={salvar}>
         <h1 className="text-centro"> Formulario</h1>
                 <h2>Nome</h2>
-                <input value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
+                <input className="algo" value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
                 <h2>Incorporaçao do video:</h2>
-                <input value={frame} onChange={(e) => setFrame(e.target.value)} type="text"></input>
+                <input className="algo" value={frame} onChange={(e) => setFrame(e.target.value)} type="text"></input>
                 <h2>Conteudo</h2>
-                <input value={conteudo} onChange={(e) => setConteudo(e.target.value)} type="text"></input>
+                <input className="algo" value={conteudo} onChange={(e) => setConteudo(e.target.value)} type="text"></input>
                 <h2>Criador</h2>
-                <input value={criador} onChange={(e) => setCriador(e.target.value)} type="text"></input>
+                <input className="algo" value={criador} onChange={(e) => setCriador(e.target.value)} type="text"></input>
                 <h2>Lingua do Video</h2>
-                <input value={linguagem} onChange={(e) => setLinguagem(e.target.value)} type="text"></input>
+                <input className="algo" value={linguagem} onChange={(e) => setLinguagem(e.target.value)} type="text"></input>
                   <br/>
                 <button type="submit" className="btn btn-primary">ADD</button>
             </form>

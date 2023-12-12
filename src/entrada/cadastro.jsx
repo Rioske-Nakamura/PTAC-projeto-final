@@ -9,9 +9,9 @@ export default function Cadastro() {
   const [senha, setSenha] = useState("");
   const [algo, setAlgo] = useState("");
   const [idusu, setIdusu] = useState(0);
-  const [errosenha, setErroSenha]= useState("")
-  const [erroemail, setErroEmail]= useState("")
-  const [mensagem, setMensagem]= useState("")
+  const [errosenha, setErroSenha]= useState([])
+  const [erroemail, setErroEmail]= useState([])
+  const [mensagem, setMensagem]= useState([])
 
   useEffect(() => {
     localStorage.setItem("usuarios", JSON.stringify(contas));
@@ -23,8 +23,8 @@ export default function Cadastro() {
     const confereEmail = email.trim();
 
     if (!confereEmail.endsWith("@gmail.com")) {
-      setErroEmail("Endereço de email incorreto");
-      setMensagem("Email não cadastrado");
+      setErroEmail(["Endereço de email incorreto", "eorr"]);
+      setMensagem(["Email não cadastrado", "eorr"]);
       setEmail("");
       return;
     }
@@ -33,11 +33,13 @@ export default function Cadastro() {
     for (let i = 0; i < contas.length; i++) {
       if (contas[i].email === email) {
         setEmail("");
-        setErroEmail("Email repetido")
-        setMensagem("conta nao cadastrada")
+        setErroEmail(["Email repetido", "eorr"])
+        setMensagem(["Email não cadastrado", "eorr"]);
         return;
       }
     }
+
+    setErroEmail(["Email esta correto", "suce"])
 
     if (senha === algo) {
       setContas([
@@ -49,17 +51,17 @@ export default function Cadastro() {
           iduso: idusu,
         },
       ]);
-      setErroSenha("Esta correta");
-      setErroEmail("Email esta correto")
-      setMensagem("conta cadastrada")
+      setErroSenha(["Esta correta", "suce"]);
+      setErroEmail(["Email esta correto", "suce"])
+      setMensagem(["Email cadastrado", "suce"]);
       setEmail("");
       setName("");
       setSenha("");
       setIdusu(idusu + 1);
       setAlgo("");
     } else {
-    setErroSenha("Senha incorreta")
-    setMensagem("conta nao cadastrada")
+    setErroSenha(["Senha incorreta", "eorr"])
+    setMensagem(["Email não cadastrado", "eorr"]);
       setSenha("");
       setAlgo("");
       return;
@@ -70,25 +72,23 @@ export default function Cadastro() {
     <form className="formulario" onSubmit={salvarusuario}>
       <div>
         <h1>Cadastre-se:</h1>
-        <h1>{mensagem}</h1>
+        <h1 className={mensagem[1]}>{mensagem[0]}</h1>
         <h3>Email:</h3>
-        <p className="eorr">{erroemail}</p>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
+        <p className={erroemail[1]}>{erroemail[0]}</p>
+        <input className="algo" value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
         <h3>Nome de Usuario:</h3>
-        <input value={name} onChange={(e) => setName(e.target.value)} type="text" />
+        <input className="algo" value={name} onChange={(e) => setName(e.target.value)} type="text" />
       </div>
       <div>
 
         <h3>Senha:</h3>
-        <p className="eorr">{errosenha}</p>
-        <input value={senha} onChange={(e) => setSenha(e.target.value)} type="text" />
+        <p className={errosenha[1]}>{errosenha[0]}</p>
+        <input className="algo" value={senha} onChange={(e) => setSenha(e.target.value)} type="text" />
         <h3>Confirme sua Senha</h3>
-        <input value={algo} onChange={(e) => setAlgo(e.target.value)} type="text" />
+        <input className="algo" value={algo} onChange={(e) => setAlgo(e.target.value)} type="text" />
       </div>
       <div>
-        <button type="submit" className="btn btn-primary">
-          Logar
-        </button>
+        <button type="submit" className="btn btn-primary">Cadastrar</button>
         <br />
         <br />
         <Link to="/" className="toma">
