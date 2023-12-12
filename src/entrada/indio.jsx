@@ -7,8 +7,7 @@ import React, { useState, useEffect } from "react";
 export default function Pagina(){
  const {elemanto} = useParams("");
 
- const alStorage = localStorage.getItem("usuarios");
- const [count, setCount] = useState(0)
+const alStorage = localStorage.getItem("usuarios");
 const [contas, setContas]= useState(alStorage ? JSON.parse(alStorage) : []);
 const [email, setEmail]= useState("");
 const [name, setName]= useState("");
@@ -17,24 +16,7 @@ const [idusu, setIdusu]= useState(0)
 
 useEffect(() => {
     localStorage.setItem("usuarios", JSON.stringify(contas));
-    document.title= `voce clicou  ${count} vezes`;
-}, [contas, count])
-
-const salvar = (e) =>{
-    e.preventDefault();
-    setContas([...contas,{
-        email: email,
-        name: name,
-        senha: senha,
-        iduso: idusu
-    }]);
-    setConteudo("");
-    setName("");
-    setSenha("");
-    setIdusu(idusu+1)
-    setCount(count+1)
-    setEmail("")
-};
+}, [contas])
 
 
 
