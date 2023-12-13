@@ -5,6 +5,8 @@ import Detalhe from "./componente/detalhe";
 export default function Home() {
   const alStorage = localStorage.getItem("lista");
   const alStorage2 = localStorage.getItem("contem");
+  const alStorage3 = localStorage.getItem("nomeuso");
+  const [guardaruso, setGuardarUso] = useState(alStorage3 ? JSON.parse(alStorage3) : []);
   const [count, setCount] = useState(0);
   const [conteudo, setConteudo] = useState("");
   const [frame, setFrame] = useState("");
@@ -15,6 +17,7 @@ export default function Home() {
   const [linguagem, setLinguagem]= useState("")
   const [mostrarDetalhe, setMostrarDetalhe] = useState(false);
   const [mostrar, setMostrar] = useState(alStorage2 ? JSON.parse(alStorage2) : []);
+  const [verificaca, setVerificaCadastro] = useState("")
 
 
   
@@ -22,13 +25,21 @@ export default function Home() {
   useEffect(() => {
   localStorage.setItem("lista", JSON.stringify(video));
   localStorage.setItem("contem", JSON.stringify(mostrar));
+  localStorage.setItem("nomeuso", JSON.stringify(guardaruso))
   document.title = `Você clicou ${count} vezes`;
  
-}, [video, count, mostrar]);
+}, [video, count, mostrar,guardaruso]);
 
 
   const salvar = (e) => {
     e.preventDefault();
+    if(guardaruso.length === 0){
+      
+      return setVerificaCadastro("Voce Nao esta logado");
+    }
+    else{
+      
+    
     setVideo([
       ...video,
       {
@@ -47,6 +58,8 @@ export default function Home() {
     setCount(count + 1);
     setLinguagem("")
     setCriador("")
+    setVerificaCadastro("Voce esta logado")
+  }
   };
 
   const apagarC = (index) => {
@@ -74,6 +87,7 @@ export default function Home() {
 
       <form className="formulario" onSubmit={salvar}>
         <h1 className="text-centro"> Formulario</h1>
+                <h2 className="text-centro">{verificaca}</h2>
                 <h2>Nome</h2>
                 <input className="algo" value={nome} onChange={(e) => setNome(e.target.value)} type="text" />
                 <h2>Incorporaçao do video:</h2>
