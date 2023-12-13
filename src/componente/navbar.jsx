@@ -1,6 +1,25 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Nav() {
+
+  const alStorage2 = localStorage.getItem("nomeuso");
+  const [guardaruso, setGuardarUso] = useState(alStorage2 ? JSON.parse(alStorage2) : "");
+  const [nomeis, setNomeis] = useState("")
+
+
+
+  useEffect(()=> {
+    if(guardaruso.length === 0){
+      setNomeis("Anonimo")
+    }
+    else{
+      setNomeis([guardaruso[0]])
+    }
+    localStorage.setItem("nomeuso", JSON.stringify(guardaruso))
+  }, [guardaruso])
+  
+
   return (
     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
@@ -24,7 +43,7 @@ export default function Nav() {
             <Link class="nav-link text-light" to="/pagina/logual">Login </Link>
             <Link class="nav-link text-light" to="/pagina/casdastra">Cadastro</Link>
 
-            <a class="nav-link disabled text-light" aria-disabled="true">Disabled</a>
+            <a class="nav-link disabled text-light" aria-disabled="true">{nomeis}</a>
           </div>
         </div>
       </div>

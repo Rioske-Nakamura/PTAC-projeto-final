@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const alStorage = localStorage.getItem("usuarios");
   const [contas, setContas] = useState(alStorage ? JSON.parse(alStorage) : []);
+  const alStorage2 = localStorage.getItem("nomeuso");
+  const [guardaruso, setGuardarUso] = useState(alStorage2 ? JSON.parse(alStorage2) : []);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState(["", ""]);
 
   useEffect(() => {
     localStorage.setItem("usuarios", JSON.stringify(contas));
-  }, [contas]);
+    localStorage.setItem("nomeuso", JSON.stringify(guardaruso));
+  }, [contas, guardaruso]);
 
   const validar = (e) => {
     e.preventDefault();
@@ -34,6 +37,10 @@ const usuarioEncontrado = contas.find((conta) => conta.email === email);
     }
 
     setMensagem(["Login bem-sucedido!", "suce"]);
+
+    setGuardarUso(
+       [usuarioEncontrado.name]
+   )
   };
 
   return (
